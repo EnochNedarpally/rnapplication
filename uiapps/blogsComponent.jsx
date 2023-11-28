@@ -11,11 +11,26 @@ const [blog, setBlogInfo] = useState({
   title:"",
   details:""
 })
-const [blogs, setBlogs] = useState(posts)
-const [selectedBlog, setSelectedBlog] = useState(null)
+const [blogs, setBlogs] = useState(logic.getPosts())
+const [selectedBlog, setSelectedBlog] = useState({
+  id:"",
+  title:"",
+  details:""
+})
 const [filterText, setFilterText] = useState("")
 const saveBlog = ()=>{
-  const blg=logic.createNewPost(blog)
+ 
+  const blg=selectedBlog.id !=="" ? logic.updatePost(blog) :logic.createNewPost(blog)
+  setBlogs(blg)
+  setBlogInfo({
+    id:"",
+    title:"",
+    details:""
+  })
+}
+
+const deleteBlog = ()=>{
+  const blg=logic.deletPost(selectedBlog);
   setBlogs(blg)
   setBlogInfo({
     id:"",
@@ -24,8 +39,12 @@ const saveBlog = ()=>{
   })
 }
 const handleFilter = ()=>{
-  let filterBlog = posts.filter((p)=> {p.title == filterText})
-  setBlogs(filter)
+  let filterBlog = posts.filter((p)=> { return p.title.toLowerCase() == filterText.toLowerCase()})
+  setBlogs(filterBlog)
+}
+const handleSelect = (item)=>{
+  setBlogInfo(item)
+  setSelectedBlog(item)
 }
   return (
     <View style={styles.container}>
@@ -39,19 +58,20 @@ const handleFilter = ()=>{
       <Text style={styles.text}>Details</Text>
       <TextInput value={blog.details} onChangeText={text=>setBlogInfo({...blog,details:text})} style={styles.textInput} multiline={true} />
       <Button onPress={saveBlog} title ="Save Blog Info"/>
+      <Button onPress={deleteBlog} title ="Delete"/>
       <Text>Filter</Text>
-      <TextInput value={filterText} onChange={text=>setFilterText(text)} onBlur={handleFilter}/>
+      <TextInput style={styles.textInput} value={filterText} onChangeText={text=>setFilterText(text)} onBlur={handleFilter}/>
       {/* <Text>{JSON.stringify(blogs)}</Text> */}
       <Text>Selcted Blog</Text>
-      <TextInput value={`${selectedBlog.id},${selectedBlog.title}, ${selectedBlog.details}`}/>
+      <TextInput style={styles.textInput} value={`${selectedBlog.id},${selectedBlog.title}, ${selectedBlog.details}`}/>
       <FlatList
       data={blogs}
       keyExtractor={({id})=>id}
-      renderItem={({item})=>{
-        <Text onPress={()=>setSelectedBlog(item)} style={styles.textInput}>
+      renderItem={({item})=>(
+        <Text  onPress={()=>handleSelect(item)}>
           {item.id} {item.title} {item.details}
         </Text>
-      }}
+  )}
       />
     </View>
   )

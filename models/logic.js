@@ -13,14 +13,13 @@ export class Blogger{
         return this.posts
     }
     deletPost(post){
-        this.posts.filter(p=> {post.id!==post.id})
+        this.posts = this.posts.filter(p=> {return p.id!==post.id})
+        // return this.posts.splice(parseInt(post.id),1)
+        return this.posts
     }
     updatePost(post){
-        this.post.map(p=>{
-            if(p.id == post.id){
-                return post
-            }
-            return p
-        })
+        const index = this.posts.findIndex(obj => obj.id === post.id);
+        this.posts[index]=post
+        return this.posts
     }
 }
