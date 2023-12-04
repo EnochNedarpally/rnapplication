@@ -12,7 +12,7 @@ const CustomForms = ({employee,setFormValues,formValues,saveForm}) => {
             <View style={styles.form}>
             {Object.keys(employee).map(key => (
                 <View key={key}>
-                    <Text>{key}</Text>
+                    <Text style={{fontSize:16,marginVertical:10}}>{key}</Text>
                     <TextInput value={formValues.key} onChangeText={text=>setFormValues({...formValues,[key]:text})} style={styles.input} />
                 </View>
             ))}
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     header:{
-        fontSize:18,
-        marginHorizontal:15,
+        fontSize:24,
+        marginTop:55,
         fontWeight:'600'
     },
     form:{
@@ -47,17 +47,21 @@ const styles = StyleSheet.create({
         // borderRadius:7,
     },
     input: {
-        backgroundColor: 'grey',
+        backgroundColor: '#e4e4e4',
         borderWidth: 2,
         borderRadius: 5,
         width:300,
-        color:'white'
+        color:'#464646'
     },
     button:{
-        backgroundColor:'crimson',
+        backgroundColor:'#67ceeb',
         width:100,
         padding:10,
         alignItems:'center',
-        borderRadius:10
+        borderRadius:10,
+        cursor:'pointer',
+        '&:hover':{
+            backgroundColor:'#1495b9',
+        }
     }
 })

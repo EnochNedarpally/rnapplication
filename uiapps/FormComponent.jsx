@@ -9,15 +9,18 @@ const FormComponent = () => {
         EmpName: ''
     };
     const [formValues, setFormValues] = useState(employee)
-    console.log(formValues)
+    let data={}
 const saveForm=async(formData)=>{
     await AsyncStorage.setItem('formData',JSON.stringify(formData));
-    const data = await AsyncStorage.getItem('formData');
-    console.log("data",data)
+    data = await AsyncStorage.getItem('formData');
+
+    await console.log("data",data)
 }
+
   return (
     <View style={styles.container}>
       <CustomForms employee={employee} saveForm={saveForm} formValues={formValues} setFormValues={(val)=>setFormValues(val)}/>
+      <Text>{JSON.stringify(data)}</Text>
     </View>
   )
 }
