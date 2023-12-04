@@ -20,6 +20,14 @@ export const styles = StyleSheet.create({
         color:'cyan',
         backgroundColor:'lightyellow',
     },
+    disableTextInput:{
+        height:40,
+        fontFamily:'Times New Roman',
+        fontSize:15,
+        fontWeight:'bold',
+        color:'cyan',
+        backgroundColor:'gray',
+    },
     textItem:{
         fontFamily:'Times New Roman',
         fontSize:10,
