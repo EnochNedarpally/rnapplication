@@ -92,15 +92,15 @@ const ApiCallComponent = () => {
     const save = () => {
         const validate = validateInput(category)
         if (validate) {
-            serv.postCategories(category)
-                .then(res => {
-                    //Add te newly created record un the array
-                    setCategories([...categories, res.data])
-                    setCategory(initialStateForCategory);
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+            // serv.postCategories(category)
+            //     .then(res => {
+            //         //Add te newly created record un the array
+            //         setCategories([...categories, res.data])
+            //         setCategory(initialStateForCategory);
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
         }
 
     }

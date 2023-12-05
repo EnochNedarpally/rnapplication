@@ -14,5 +14,6 @@ import PracticeAsyncStorage from './uiapps/practiceAsyncStorage';
 import TextInputParentComponent from './uiapps/textInputParentComponent';
 import FormComponent from './uiapps/FormComponent';
 import ApiCallComponent from './uiapps/apiCallComponent';
+import AppStateFunctionalComponent from './uiapps/AppStateComponent';
 
-AppRegistry.registerComponent(appName, () => ApiCallComponent);
+AppRegistry.registerComponent(appName, () => AppStateFunctionalComponent);
