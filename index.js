@@ -15,5 +15,10 @@ import TextInputParentComponent from './uiapps/textInputParentComponent';
 import FormComponent from './uiapps/FormComponent';
 import ApiCallComponent from './uiapps/apiCallComponent';
 import AppStateFunctionalComponent from './uiapps/AppStateComponent';
+import SmsComponent from './uiapps/SmsComponent';
+import ProviderComponent from './reduxApps/ProviderComponent';
+import MainReduxSagaProviderComponent from './sagasapp/views/mainreduxsagaprovidercomponent';
+import HostComponent from './miniProject/MainComponent';
 
-AppRegistry.registerComponent(appName, () => AppStateFunctionalComponent);
+
+AppRegistry.registerComponent(appName, () =>ProviderComponent);
