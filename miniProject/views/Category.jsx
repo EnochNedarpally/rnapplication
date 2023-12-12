@@ -14,7 +14,7 @@ useEffect(()=>{
   // dispatch(listCategory());
   dispatch(listCategory())
 },[])
-console.log("categoryData",categoryData)
+// console.log("categoryData",categoryData)
 
 const handeleUpdatePress=(type,item)=>{
   if(type=="Delete"){

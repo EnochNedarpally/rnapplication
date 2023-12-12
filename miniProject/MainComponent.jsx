@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Category from './views/Category';
 import Products from './views/Products';
 import AddCategory from './views/AddCategory';
+import AddProduct from './views/AddProduct';
 '@react-navigation/bottom-tabs';
 
 
@@ -18,47 +19,27 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function HostComponent() {
+
+  const HomeStack = () => (
+    <Tab.Navigator>
+      <Tab.Screen name="Category" component={Category} />
+      <Tab.Screen name="Products" component={Products} />
+    </Tab.Navigator>
+  );
   return (
       <NavigationContainer>
-         
-          {/* <Stack.Navigator initialRouteName='Category'> 
-             
-             <Stack.Screen name="CategoryList" 
-           component={Category}
-            options={{title: 'Category List',headerStyle: {
-              backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            }}}
-           />   
-            <Stack.Screen name="Product" 
-           component={Products}
-           options={{title: 'Product List',headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          }}}
-           />  
-            <Stack.Screen name="AddCategory" 
-           component={AddCategory}
-           options={{title: 'Product List',headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          }}}
-           />  
-          </Stack.Navigator>  */}
-        <Tab.Navigator >
-          <Tab.Screen name='Category' component={Category}/>
-          <Tab.Screen name='AddCategory' component={AddCategory}/>
-          <Tab.Screen name='Products' component={Products}/>
-        </Tab.Navigator>
+          <Stack.Navigator initialRouteName='Home' >
+                <Stack.Screen options={{ headerShown: false }} name='AddCategory' component={AddCategory} />
+                <Stack.Screen options={{ headerShown: false }} name='AddProduct' component={AddProduct} />
+                <Stack.Screen options={{ headerShown: false }} name='Home' component={HomeStack} /> 
+          </Stack.Navigator> 
+        {/* <Tab.Navigator > */}
+          {/* <Tab.Screen name='Category' component={Category}/>
+          <Tab.Screen name="Home" component={HomeStack}/> */}
+          {/* <Tab.Screen name='AddCategory' component={AddCategory}/>
+          <Tab.Screen name='AddProduct' component={AddProduct}/> */}
+          {/* <Tab.Screen name='Products' component={Products}/> */}
+        {/* </Tab.Navigator> */}
       </NavigationContainer>
   );
 }

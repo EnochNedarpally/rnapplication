@@ -10,7 +10,8 @@ const AddCategory = () => {
     const dispatch = useDispatch();
     const route = useRoute();
     const { data } = route.params;
-    console.log("data",data.type)
+    // const data ={type:'Update'}
+    console.log("data",route.params)
     useEffect(()=>{
         if(data.category){
             setCategory(data.category)
@@ -18,7 +19,7 @@ const AddCategory = () => {
     },[data])
     // console.log("category",category)
     const navigation=useNavigation()
-    const addCategoryData =() =>{
+    const addProductData =() =>{
         /* Dispatch Action */
         if(data?.type=="Delete"){
             dispatch(deleteCategory(category.CategoryId))
@@ -35,7 +36,7 @@ const AddCategory = () => {
             // dispatch(listCategory())
         }
         dispatch(listCategory())
-        navigation.navigate("Category")
+        navigation.navigate("Products")
     };
     return (
         <View style={styles.container}>
@@ -51,7 +52,7 @@ const AddCategory = () => {
             <TextInput value={category.BasePrice.toString()} style={data?.type == "Delete" ?  styles.disableTextInput : styles.textInput}
               onChangeText={text=>setCategory({...category, BasePrice:text})} editable={data?.type == "Delete" ? false : true}
             />
-            <Button title={data?.type ?? "Save"} onPress={addCategoryData}/>
+            <Button title={data?.type ?? "Save"} onPress={addProductData}/>
         </View>
     );
 };
